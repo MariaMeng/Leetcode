@@ -3,7 +3,8 @@
  */
 public class RemoveDuplicatesFrSortedII {
     /*
-        方法一： my own solution
+        方法一：
+        my own solution
      */
     public int removeDuplicates(int[] nums) {
         if(nums.length == 0) return 0;
@@ -22,7 +23,8 @@ public class RemoveDuplicatesFrSortedII {
         return ++j;
     }
     /*
-        方法二：3-6 easy lines from Top Solution
+        方法二：
+        3-6 easy lines from Top Solution
         Just go through the numbers and include those in the result that haven't been included twice already.
      */
     public int removeDuplicates_B(int[] nums) {
@@ -36,7 +38,8 @@ public class RemoveDuplicatesFrSortedII {
     }
 
     /*
-        方法三：when duplicates are allowed at most K times
+        方法三：
+        when duplicates are allowed at most K times
         We need a count variable to keep how many times the duplicated element appears,
         if we encounter a different element, just set counter to 1,
         if we encounter a duplicated one, we need to check this count,

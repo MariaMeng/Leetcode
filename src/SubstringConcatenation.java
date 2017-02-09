@@ -11,7 +11,7 @@ public class SubstringConcatenation {
         L:所有单词组成的字符串数组
         Just build a map for the words and their relative count in word list L.
         Then we traverse through S to check whether there is a match.
-        Use two poiners:
+        Use two pointers:
         i: Traverse all characters in String S
         j: Traverse all characters in word lists L
      */

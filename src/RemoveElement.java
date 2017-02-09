@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class RemoveElement {
 
     /*
-        方法一：
+        方法一：从if(A[i] == elem)角度
         Correct Answer!!
         The basic idea is when elem is found at index i, let A[i] = the last element in the modifying array,
         then repeat searching until elem is not found.
@@ -75,7 +75,8 @@ public class RemoveElement {
 
 
     /*
-        方法二：未排序，只要当前元素！= target,则左指针++
+        方法二：从 if(A[i] != elem)角度
+        未排序，只要当前元素！= target,则左指针++
      */
     public int removeElement_B(int[] A, int elem) {
         int m = 0; //current index
