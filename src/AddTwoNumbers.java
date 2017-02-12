@@ -12,7 +12,7 @@
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
-        ListNode first = l1, second = l2, start = dummy;
+        ListNode start = dummy;
         int sum = 0;
         while(l1 != null || l2 != null) {
             sum /= 10;
