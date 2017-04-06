@@ -16,7 +16,8 @@ import java.util.*;
  [3],
  [9,20],
  [15,7]
-
+注意事项：
+ 1. 在while循环中，每次获取queue.size()这一步，一定要先保存到一个变量中，不然的话，队列是动态变化的
  */
 public class BinaryTreeLevelOrderTraversal {
     public class TreeNode {
@@ -36,7 +37,7 @@ public class BinaryTreeLevelOrderTraversal {
         queue.offer(root);
 
         while(!queue.isEmpty()) {
-            int levelNum = queue.size();
+            int levelNum = queue.size(); // 这里是关键
             List<Integer> subLiist = new LinkedList<>();
 
             for (int i = 0; i < levelNum; i++) {
@@ -50,5 +51,16 @@ public class BinaryTreeLevelOrderTraversal {
         }
         return list;
     }
+    public static void main(String [] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        int[] aray = {};
+        //String[] str = new String[3]{"1","2", "3"};
+        //String[] array4 = new String[3]{"1","2","3"};
+        System.out.println(Math.ceil(3.3));
+        //Long j = (Long) (new Integer(4));
+        Long i = new Long(3);
+        if (true) ;
+    }
+
 }
 
