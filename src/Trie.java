@@ -9,49 +9,63 @@ import java.util.*;
  */
 class TrieNode {
     Map<Character, TrieNode> children;
-    boolean wordEnd;
+    boolean isLeaf;
     public TrieNode() {
-        children = new HashMap<>();
-        wordEnd = false;
+        children = new LinkedHashMap<>();
+        isLeaf = false;
     }
 }
 public class Trie {
+
     TrieNode root;
     public Trie() {
         root = new TrieNode();
     }
-    // insert the String into Trie
     public void insert(String word) {
-        // from top to down
         TrieNode node = root;
-        for (int i = 0; i < word.length(); i++) {
+        int n = word.length();
+        for (int i = 0 ; i < n; i++) {
             char c = word.charAt(i);
-            // if root does not contain character
             if (!node.children.containsKey(c)) {
                 node.children.put(c, new TrieNode());
             }
             node = node.children.get(c);
         }
-        node.wordEnd = true;
+        node.isLeaf = true;
     }
-    // search if the word is contained in the trie
     public boolean search(String word) {
         TrieNode node = root;
-        for (int i = 0; i < word.length(); i++) {
+        int n = word.length();
+        for (int i = 0 ; i < n ; i++) {
             char c = word.charAt(i);
-            if (!node.children.containsKey(c)) return false;
+            if (!node.children.containsKey(c))
+                return false;
             node = node.children.get(c);
         }
-        return node.wordEnd;
+        return node.isLeaf;
     }
-    // search weather the prefix is contained in the trie
     public boolean startsWith(String word) {
         TrieNode node = root;
-        for (int i = 0; i < word.length(); i++) {
+        int n = word.length();
+        for (int i = 0 ; i < n ; i++) {
             char c = word.charAt(i);
-            if (!node.children.containsKey(c)) return false;
+            if (!node.children.containsKey(c))
+                return false;
             node = node.children.get(c);
         }
         return true;
+    }
+    public static  void main(String[] args) {
+        Trie my  = new Trie();
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            String s = in.next(); // str
+            int n = in.nextInt(); // num of words in dic
+            while (n-- != 0) {
+                my.insert(in.next());
+            }
+            System.out.println("Search: " + my.search(s));
+            System.out.println("StartWith: " + my.startsWith(s));
+        }
     }
 }
