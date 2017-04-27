@@ -19,6 +19,9 @@ public class BinaryTreeInorderTraversal {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
+    /*
+        方法一： 啰嗦，见方法三
+     */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root == null) return list;
@@ -34,6 +37,9 @@ public class BinaryTreeInorderTraversal {
         helper(list, stack, root.right);
 
     }
+    /*
+        方法二： 迭代法
+     */
     public List<Integer> inorderTraversal_B(TreeNode root) {
         List<Integer> list = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
@@ -50,4 +56,21 @@ public class BinaryTreeInorderTraversal {
         }
         return list;
     }
+    /*
+        方法三：递归法
+     */
+    private List<Integer> inorderTraversal_C(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+        helper(list, root);
+        return list;
+    }
+    private void helper(List<Integer> list, TreeNode root) {
+        if (root == null) return ;
+        helper(list, root.left);
+        list.add(root.val);
+        helper(list, root.right);
+    }
+
+
 }
