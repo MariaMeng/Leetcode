@@ -33,6 +33,33 @@ public class LargestRectangleInHistogram {
         return maxArea;
     }
 
+    public int largestRectangleArea_B(int[] heights) {
+        if (heights == null || heights.length == 0) return 0;
+        int n = heights.length;
+        // 栈中保存的是地址。
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        for (int i = 0; i <= n; i++) {
+            // 如果当前的位置小于n， 则赋值height[i]给h，否则，置为零。
+            int h =  (i == n? 0 : heights[i]);
+            if (stack.isEmpty() || h >= heights[stack.peek()]) {
+                stack.push(i);
+            }
+            else {
+                // 如果当前stack中非空并且当前的高度小于栈中的高度
+                while (!stack.isEmpty() && h < heights[stack.peek()]) {
+                    int top = stack.pop();
+                    // 注意这里有可能在弹栈之后，栈为空。
+                    int area = heights[top] * (stack.isEmpty() ? i : (i - stack.peek() - 1));
+                    maxArea = Math.max(area, maxArea);
+                }
+                // 当不满足while中的条件时，跳出while， 并将i压栈。
+                stack.push(i);
+            }
+        }
+        return maxArea;
+    }
+
     public static String findChar(String s) {
         String ans = null;
         Map<Character, Integer> sMap = new LinkedHashMap<Character, Integer>();
